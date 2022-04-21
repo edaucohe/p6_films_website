@@ -1,4 +1,4 @@
-// JS Modal code
+// HTML Modal code
 function addOpenModalBehavior (clickingElement, modal){
   for (let element of clickingElement){
       element.addEventListener("click", function(event){
@@ -17,16 +17,18 @@ function addClosingModalBehavior(clickingElement, modal){
   });
 }
 
+// API fetch code
 function getMovieDetails(movieId){
-    return fetch('api-url-for-movie').then(response => response.json())
+    return fetch('http://localhost:8000/api/v1/titles/' + movieId.toString()).then(response => response.json())
 }
 
-function listMoviesForCategory(searchParams) {
+function listMoviesForCategory(category) {
     const params = new URLSearchParams({
-        page_size: 12,
-        category: searchParams.category
+        page_size: 7,
+        genre: category,
+        sort_by: "-imdb_score"
     })
-    return fetch('....?' + params.toString()).then(response => response.json())
+    return fetch('http://localhost:8000/api/v1/titles/?' + params.toString()).then(response => response.json())
 }
 
 window.onload = function() {
@@ -39,5 +41,13 @@ window.onload = function() {
     addClosingModalBehavior(close, modal);
     addClosingModalBehavior(modal, modal);
 
-
+    let bestMovies = listMoviesForCategory("");
+    console.log(bestMovies);
+    
+    let thrillerMovies = listMoviesForCategory("Thriller");
+    console.log(thrillerMovies);
+    let romanceMovies = listMoviesForCategory("Romance");
+    console.log(romanceMovies);
+    let crimeMovies = listMoviesForCategory("Crime");
+    console.log(crimeMovies);
 }
