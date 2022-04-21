@@ -20,11 +20,17 @@ une fenêtre modale doit s'ouvrir en affichant plusieurs informations liées au 
 
 ## Installation
 
+Téléchargez les fichiers du dépôt.
+
 ## Setup
+
+Afin de récupérer les données des films, il faudra installer l'API dédiée à cet effet
+(voir le dépôt github et suivre les instructions).
 
 ## Use
 
-A remplir
+Ouvrir le fichier `index.html` depuis le dossier local.
 
 ## Helpful links
 
+https://github.com/OpenClassrooms-Student-Center/OCMovies-API-EN-FR
