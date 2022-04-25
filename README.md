@@ -5,8 +5,8 @@
 "Project 6 - Films website" est un projet à réaliser dans le cadre de la formation diplômante d'OpenClassrooms 
 "Développeur d'application Python".
 
-Ce projet consiste à mettre en place un site web permettant de visualiser en temps réel un classement de films, 
-ayant l'affichage des données des films depuis une API.
+Ce projet consiste à mettre en place une page web permettant de visualiser en temps réel un classement de films, 
+en affichant les données des films depuis une API.
 
 L'interface doit comprendre cinq zones :
 - Meilleur film
@@ -24,8 +24,8 @@ Téléchargez les fichiers du dépôt.
 
 ## Setup
 
-Afin de récupérer les données des films, il faudra installer l'API dédiée à cet effet
-(voir le dépôt github et suivre les instructions).
+Si vous voulez connaître les données des films, il faudra installer l'API dédiée à cet effet
+(voir le dépôt github dans "Helpful Links" et suivez les instructions).
 
 ## Use
 

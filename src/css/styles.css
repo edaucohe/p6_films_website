@@ -19,12 +19,10 @@ body{
 header{
   height: 100px;
   width: auto;
-  border: 2px solid black;
   display: flex;
   justify-content: space-between;
 }
 .logo{
-  border: 2px solid blue;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -37,51 +35,50 @@ header{
 }
 nav{
   width: 100%;
-  border: 2px solid blue;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 ul{
   list-style: none;
-  /* border: 2px solid cyan; */
   font-size: 25px;
 }
 ul li{
   float: left;
   padding-left: 75px;
 }
+ul li a{
+  color: white;
+}
+ul li a:hover{
+  text-decoration: underline;
+}
 .cover-page{
-  border: 2px solid red;
+  border: 2px solid white;
   width: auto;
-  height: 600px;
+  height: 500px;
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 10px;
-  /* background-image: url(../assets/cover_page.jpg);
-	background-repeat: no-repeat;
-	background-size: auto;
-  background-position: center; */
   display: flex;
   position: relative;
   justify-content: center;
   align-items: center;
 }
 .cover-page h1{
-  border: 2px solid blue;
+
   position: absolute;
   top: 10px;
 }
-.cover-page .best-movie{
+.cover-page .cover-page-image{
   position: absolute;
   top: 65px;
 }
 .cover-page h2{
-  border: 2px solid blue;
   position: absolute;
   top: 350px;
   text-align: center;
-  width: 70%;
+  width: 80%;
 }
 .cover-page .btn{
   position: absolute;
@@ -93,8 +90,8 @@ ul li{
 .modal{
   display: none;
   position: fixed;
-  left: 0;
-  top: 0;
+  left: 0px;
+  top: 0px;
   width: 100%;
   height: 100%;
   overflow: auto;
@@ -111,128 +108,101 @@ ul li{
   height: 70%;
   display: block;
   position: relative;
-  /* display: flex;
-  flex-wrap: wrap; */
-  /* justify-content: flex-end;
-  align-items: baseline; */
 }
 .close{
-  border: 2px solid white;
   position: absolute;
   top: 10px;
   right: 10px;
 }
 .modal_image{
-  border: 2px solid white;
   position: absolute;
   top: 10px;
   left: 10px;
-  /* background-image: url(../assets/modal_image.jpg); */
-  /* background-color: black;
-	background-repeat: no-repeat;
-	background-size: auto;
-  background-position: center; */
+}
+p{
+  font-weight: bold;
+}
+p span{
+  font-weight: normal;
 }
 .modal_title{
-  border: 2px solid white;
   position: absolute;
   top: 10px;
   left: 210px;
 }
 .modal_genre{
-  border: 2px solid white;
   position: absolute;
   top: 60px;
   left: 210px;
   right: 10px;
 }
 .modal_date{
-  border: 2px solid white;
   position: absolute;
   top: 110px;
   left: 210px;
   right: 10px;
 }
 .modal_rated{
-  border: 2px solid white;
   position: absolute;
   top: 160px;
   left: 210px;
   right: 10px;
 }
 .modal_imdb{
-  border: 2px solid white;
   position: absolute;
   top: 210px;
   left: 210px;
   right: 10px;
 }
 .modal_director{
-  border: 2px solid white;
   position: absolute;
   top: 260px;
   left: 210px;
   right: 10px;
-  /* display: flex;
-  flex-wrap: wrap; */
 }
 .modal_actors{
-  border: 2px solid white;
   position: absolute;
   top: 310px;
   left: 10px;
   right: 10px;
-  /* display: flex;
-  flex-wrap: wrap; */
 }
 .modal_duration{
-  border: 2px solid white;
   position: absolute;
   top: 360px;
   left: 10px;
   right: 10px;
-  /* display: flex;
-  flex-wrap: wrap; */
 }
 .modal_countries{
-  border: 2px solid white;
   position: absolute;
   top: 410px;
   left: 10px;
   right: 10px;
 }
 .modal_income{
-  border: 2px solid white;
   position: absolute;
   top: 460px;
   left: 10px;
   right: 10px;
 }
 .modal_description{
-  border: 2px solid white;
   position: absolute;
   top: 510px;
   left: 10px;
   right: 10px;
 }
-
 .close:hover{
   font-weight: bold;
   cursor: pointer;
 }
 section{
-  border: 2px solid red;
+  border: 2px solid white;
   width: auto;
   height: 320px;
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 10px;
 }
-section h2{
-  border: 2px solid blue;
-}
 .films{
-  border: 2px solid blue;
   height: 268px;
   display: flex;
   position: relative;
@@ -242,26 +212,13 @@ section h2{
   position: absolute;
   top: 40%;
   z-index: 3;
-  /* border: 2px solid orange; */
 }
-/* .films .left_button{
-  left: -15px;
-}
-.films .right_button{
-  right: -15px;
-} */
 .film{
-  border: 2px solid cyan;
   width: 100%;
   padding: 10px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  border: 3px solid white;
-  background-image: url(../assets/modal_image.jpg);
-	background-repeat: no-repeat;
-	background-size: auto;
-  background-position: center;
 }
 .film h3{
   z-index: 2;
@@ -273,11 +230,8 @@ section h2{
   object-fit: contain;
   z-index: 1;
 }
-h3{
-  border: 2px solid cyan;
-}
 footer{
-  border: 2px solid black;
+  border: 2px solid white;
   width: auto;
   height: 50px;
   margin-top: 10px;
@@ -286,7 +240,4 @@ footer{
   display: flex;
   justify-content: center;
   align-items: center;
-}
-footer p{
-
 }

@@ -1,15 +1,13 @@
 // HTML Modal code
-function addOpenModalBehavior (clickingElement, modal, urlMovie){
-  // for (let element of clickingElement){
+function openModalBehavior (clickingElement, modal, urlMovie){
     clickingElement.addEventListener("click", function(event){
     event.preventDefault();
     modal.style.display = "flex";
-    htmlCode(urlMovie);
+    showInfoOnModal(urlMovie);
   });
-  // }
 }
 
-function addClosingModalBehavior(clickingElement, modal){
+function closeModalBehavior(clickingElement, modal){
   clickingElement.addEventListener("click", function(event){
     event.preventDefault();
     if (event.target === clickingElement) {
@@ -19,10 +17,9 @@ function addClosingModalBehavior(clickingElement, modal){
 }
 
 // API fetch code
-function htmlCode(url){
+function showInfoOnModal(url){
   url
   .then(details => {
-    console.log("details.title", details.title);
     document.getElementById("modal_image").src = details.image_url;
     document.getElementById("modal_title").textContent = details.title;
     document.getElementById("modal_genre").textContent = details.genres;
@@ -35,12 +32,11 @@ function htmlCode(url){
     document.getElementById("modal_countries").textContent = details.countries;
     document.getElementById("modal_description").textContent = details.description;
     if (details.worldwide_gross_income === null) {
-      document.getElementById("modal_income").textContent = "Il n'y a pas de données";
+      document.getElementById("modal_income").textContent = "Il n'y en a pas d'information";
     }
     else {
       document.getElementById("modal_income").textContent = details.worldwide_gross_income+" USD";
     }
-    // return details.blob();
   })
 }
 
@@ -58,117 +54,58 @@ function listMoviesForCategory(category) {
   .then(response => response.json())
 }
 
-// function showMoviesInfo(infoMovies, category){
-//   for (let infoMovie = 0; infoMovie < infoMovies.length; infoMovie++) {
-//     console.log("infoMovies[infoMovie]", infoMovies[infoMovie]);
-//     infoMovies[infoMovie]
-//     .then(info => {
-//       if (category === "cat-1-") {
-//         let clickingMovieElement = document.getElementById(category + infoMovie.toString());
-//         let modal = document.getElementById('modal');
-//         // addOpenModalBehavior(clickingMovieElement, modal);
-//         console.log("infoMovies[infoMovie].url", infoMovies[infoMovie].url);
-//       }
-//     })
-//   }
-// }
-
-function getUrlMovies(movies, category) {
+function showMovies(movies, category) {
   urlMoviesList = [];
   movies
   .then(moviesData => {
-
     for (let movieData = 0; movieData < moviesData.results.length; movieData++) {
       urlMovie = getMovieDetails(moviesData.results[movieData].url);
-      console.log("movieData", movieData);
-      console.log("urlMovie", urlMovie);
-      urlMoviesList.push(urlMovie);
-      if (category === "cat-1-") {
-        console.log("category", category + movieData.toString());
-        let clickingMovieElement = document.getElementById(category + movieData.toString());
-        // document.getElementById(clickingMovieElement).src = urlMovie.image_url;
-        console.log("clickingMovieElement", clickingMovieElement);
-        let modal = document.getElementById('modal');
-        addOpenModalBehavior(clickingMovieElement, modal, urlMovie);
+      let clickingMovieElement = document.getElementById(category + movieData.toString());
+      urlMovie.then(details => document.getElementById(category + movieData.toString()).src = details.image_url)
+      let modal = document.getElementById('modal');
+      openModalBehavior(clickingMovieElement, modal, urlMovie);
+
+      if (category === "cat-0-") {
+        document.getElementById("cover-page-title").textContent = moviesData.results[0].title;
+        document.getElementById("cover-page-image").src = moviesData.results[0].image_url;
+        if (movieData === 0){
+          urlMovie.then(details => document.getElementById("cover-page-description").textContent = details.description);
+          openModalBehavior(document.getElementById("cover-page-btn"), modal, urlMovie);
+        }
       }
-      if (category === "cat-2-") {
-        console.log("category", category + movieData.toString());
-        let clickingMovieElement = document.getElementById(category + movieData.toString());
-        console.log("clickingMovieElement", clickingMovieElement);
-        let modal = document.getElementById('modal');
-        addOpenModalBehavior(clickingMovieElement, modal, urlMovie);
-      }
-      if (category === "cat-3-") {
-        console.log("category", category + movieData.toString());
-        let clickingMovieElement = document.getElementById(category + movieData.toString());
-        console.log("clickingMovieElement", clickingMovieElement);
-        let modal = document.getElementById('modal');
-        addOpenModalBehavior(clickingMovieElement, modal, urlMovie);
-      }
-      if (category === "cat-4-") {
-        console.log("category", category + movieData.toString());
-        let clickingMovieElement = document.getElementById(category + movieData.toString());
-        console.log("clickingMovieElement", clickingMovieElement);
-        let modal = document.getElementById('modal');
-        addOpenModalBehavior(clickingMovieElement, modal, urlMovie);
-      }
-      // htmlCode(urlMovie);
     }
-    // console.log("urlMoviesList", urlMoviesList);
-    return urlMoviesList
   })
   .catch(error => console.error("il y a une erreur :", error));
-  return urlMoviesList
 }
-
-// function listUrlMovies(movies) {
-//   let urlMoviesList = [];
-//   let infoMovies = movies.then(value => value.results);
-//   const moviesNumber = movies.then(value => value.results.length);
-//   console.log("infoMovies", infoMovies);
-//   console.log("moviesNumber", moviesNumber);
-//
-//   for (let movie = 0; movie < 7; movie++){
-    // urlMoviesList.push(movies.then(value => value.results[movie]));
-//   }
-//   return urlMoviesList
-// }
 
 window.onload = function() {
   let btn = document.getElementsByClassName('btn');
   let modal = document.getElementById('modal');
   let close = document.getElementsByClassName('close')[0];
+  const cat_1 = "Crime";
+  const cat_2 = "Family";
+  const cat_3 = "Fantasy";
 
-  // Add modal behavior
-  // addOpenModalBehavior(btn, modal);
-  addClosingModalBehavior(close, modal);
-  addClosingModalBehavior(modal, modal);
+  // Add closing modal behavior
+  closeModalBehavior(close, modal);
+  closeModalBehavior(modal, modal);
 
   // Get categories from API
   let bestMovies = listMoviesForCategory("");
-  console.log("bestMovies", bestMovies);
 
-  let cat2Movies = listMoviesForCategory("Thriller");
-  console.log("thrillerMovies", cat2Movies);
-  let cat3Movies = listMoviesForCategory("Romance");
-  console.log("romanceMovies", cat3Movies);
-  let cat4Movies = listMoviesForCategory("Crime");
-  console.log("crimeMovies", cat4Movies);
+  let cat1Movies = listMoviesForCategory(cat_1);
+  let cat2Movies = listMoviesForCategory(cat_2);
+  let cat3Movies = listMoviesForCategory(cat_3);
 
-  // Show movies on modal
-  let infoBestMovies = getUrlMovies(bestMovies, "cat-1-");
-  console.log("infoBestMovies", infoBestMovies);
+  // Show movies on modal and index page
+  showMovies(bestMovies, "cat-0-");
 
-  let infoCat2Movies = getUrlMovies(cat2Movies, "cat-2-");
-  console.log("infoCat2Movies", infoCat2Movies);
-  let infoCat3Movies = getUrlMovies(cat3Movies, "cat-3-");
-  console.log("infoCat3Movies", infoCat3Movies);
-  let infoCat4Movies = getUrlMovies(cat4Movies, "cat-4-");
-  console.log("infoCat4Movies", infoCat4Movies);
+  showMovies(cat1Movies, "cat-1-");
+  showMovies(cat2Movies, "cat-2-");
+  showMovies(cat3Movies, "cat-3-");
 
-  // let categoryId = document.getElementById('modal');
-  // showMoviesInfo(infoBestMovies, "cat-1-");
-  // let bestMoviesList = urlMovies(bestMovies);
-  // console.log("bestMoviesList", bestMoviesList);
-
+  // Titles on index
+  document.getElementById("cat-1-titre").textContent = cat_1;
+  document.getElementById("cat-2-titre").textContent = cat_2;
+  document.getElementById("cat-3-titre").textContent = cat_3;
 }
