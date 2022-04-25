@@ -58,13 +58,13 @@ ul li{
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 10px;
-  background-image: url(../assets/cover_page.jpg);
+  /* background-image: url(../assets/cover_page.jpg);
 	background-repeat: no-repeat;
-	background-size: cover;
-  background-position: center;
+	background-size: auto;
+  background-position: center; */
   display: flex;
   position: relative;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 .cover-page h1{
@@ -72,7 +72,18 @@ ul li{
   position: absolute;
   top: 10px;
 }
-.cover-page img{
+.cover-page .best-movie{
+  position: absolute;
+  top: 65px;
+}
+.cover-page h2{
+  border: 2px solid blue;
+  position: absolute;
+  top: 350px;
+  text-align: center;
+  width: 70%;
+}
+.cover-page .btn{
   position: absolute;
   bottom: 10px;
 }
@@ -89,18 +100,122 @@ ul li{
   overflow: auto;
   background-color: rgba(0,0,0,0.5);
   z-index: 4;
+  justify-content: center;
 }
 .modal-content{
   background-color: #113c62;
   border: 2px solid white;
   margin: 10%;
   padding: 10px;
-  width: auto;
+  width: 70%;
   height: 70%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: baseline;
+  display: block;
+  position: relative;
+  /* display: flex;
+  flex-wrap: wrap; */
+  /* justify-content: flex-end;
+  align-items: baseline; */
 }
+.close{
+  border: 2px solid white;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.modal_image{
+  border: 2px solid white;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  /* background-image: url(../assets/modal_image.jpg); */
+  /* background-color: black;
+	background-repeat: no-repeat;
+	background-size: auto;
+  background-position: center; */
+}
+.modal_title{
+  border: 2px solid white;
+  position: absolute;
+  top: 10px;
+  left: 210px;
+}
+.modal_genre{
+  border: 2px solid white;
+  position: absolute;
+  top: 60px;
+  left: 210px;
+  right: 10px;
+}
+.modal_date{
+  border: 2px solid white;
+  position: absolute;
+  top: 110px;
+  left: 210px;
+  right: 10px;
+}
+.modal_rated{
+  border: 2px solid white;
+  position: absolute;
+  top: 160px;
+  left: 210px;
+  right: 10px;
+}
+.modal_imdb{
+  border: 2px solid white;
+  position: absolute;
+  top: 210px;
+  left: 210px;
+  right: 10px;
+}
+.modal_director{
+  border: 2px solid white;
+  position: absolute;
+  top: 260px;
+  left: 210px;
+  right: 10px;
+  /* display: flex;
+  flex-wrap: wrap; */
+}
+.modal_actors{
+  border: 2px solid white;
+  position: absolute;
+  top: 310px;
+  left: 10px;
+  right: 10px;
+  /* display: flex;
+  flex-wrap: wrap; */
+}
+.modal_duration{
+  border: 2px solid white;
+  position: absolute;
+  top: 360px;
+  left: 10px;
+  right: 10px;
+  /* display: flex;
+  flex-wrap: wrap; */
+}
+.modal_countries{
+  border: 2px solid white;
+  position: absolute;
+  top: 410px;
+  left: 10px;
+  right: 10px;
+}
+.modal_income{
+  border: 2px solid white;
+  position: absolute;
+  top: 460px;
+  left: 10px;
+  right: 10px;
+}
+.modal_description{
+  border: 2px solid white;
+  position: absolute;
+  top: 510px;
+  left: 10px;
+  right: 10px;
+}
+
 .close:hover{
   font-weight: bold;
   cursor: pointer;
@@ -108,7 +223,7 @@ ul li{
 section{
   border: 2px solid red;
   width: auto;
-  height: 215px;
+  height: 320px;
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 10px;
@@ -118,10 +233,10 @@ section h2{
 }
 .films{
   border: 2px solid blue;
-  height: 75%;
+  height: 268px;
   display: flex;
   position: relative;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .films img{
   position: absolute;
@@ -137,18 +252,23 @@ section h2{
 } */
 .film{
   border: 2px solid cyan;
-  width: 20%;
+  width: 100%;
   padding: 10px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  border: 3px solid white;
+  background-image: url(../assets/modal_image.jpg);
+	background-repeat: no-repeat;
+	background-size: auto;
+  background-position: center;
 }
 .film h3{
   z-index: 2;
 }
 .film img{
   height: 100%;
-  width: 20%;
+  width: 15%;
   top: 0px;
   object-fit: contain;
   z-index: 1;
