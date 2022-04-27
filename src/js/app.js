@@ -44,16 +44,6 @@ function getMovieDetails(urlMovie){
   return fetch(urlMovie).then(movieDetails => movieDetails.json())
 }
 
-function listMoviesForCategory(category) {
-  const params = new URLSearchParams({
-    page_size: 7,
-    genre: category,
-    sort_by: "-imdb_score"
-  })
-  return fetch('http://localhost:8000/api/v1/titles/?' + params.toString())
-  .then(response => response.json())
-}
-
 function showMovies(movies, category) {
   urlMoviesList = [];
   movies
@@ -61,9 +51,9 @@ function showMovies(movies, category) {
     for (let movieData = 0; movieData < moviesData.results.length; movieData++) {
       urlMovie = getMovieDetails(moviesData.results[movieData].url);
       let clickingMovieElement = document.getElementById(category + movieData.toString());
-      urlMovie.then(details => document.getElementById(category + movieData.toString()).src = details.image_url)
       let modal = document.getElementById('modal');
       openModalBehavior(clickingMovieElement, modal, urlMovie);
+      urlMovie.then(details => document.getElementById(category + movieData.toString()).src = details.image_url)
 
       if (category === "cat-0-") {
         document.getElementById("cover-page-title").textContent = moviesData.results[0].title;
@@ -78,13 +68,22 @@ function showMovies(movies, category) {
   .catch(error => console.error("il y a une erreur :", error));
 }
 
+function listMoviesForCategory(category) {
+  const params = new URLSearchParams({
+    page_size: 7,
+    genre: category,
+    sort_by: "-imdb_score"
+  })
+  return fetch('http://localhost:8000/api/v1/titles/?' + params.toString())
+  .then(response => response.json())
+}
+
 window.onload = function() {
-  let btn = document.getElementsByClassName('btn');
-  let modal = document.getElementById('modal');
   let close = document.getElementsByClassName('close')[0];
+  let modal = document.getElementById('modal');
   const cat_1 = "Crime";
   const cat_2 = "Family";
-  const cat_3 = "Fantasy";
+  const cat_3 = "Action";
 
   // Add closing modal behavior
   closeModalBehavior(close, modal);

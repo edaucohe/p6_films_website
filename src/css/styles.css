@@ -16,6 +16,7 @@ body{
   width: 90%;
   color: white;
 }
+
 header{
   height: 100px;
   width: auto;
@@ -53,6 +54,7 @@ ul li a{
 ul li a:hover{
   text-decoration: underline;
 }
+
 .cover-page{
   border: 2px solid white;
   width: auto;
@@ -66,7 +68,6 @@ ul li a:hover{
   align-items: center;
 }
 .cover-page h1{
-
   position: absolute;
   top: 10px;
 }
@@ -87,6 +88,7 @@ ul li a:hover{
 .btn{
   cursor: pointer;
 }
+
 .modal{
   display: none;
   position: fixed;
@@ -109,21 +111,16 @@ ul li a:hover{
   display: block;
   position: relative;
 }
-.close{
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-.modal_image{
-  position: absolute;
-  top: 10px;
-  left: 10px;
-}
 p{
   font-weight: bold;
 }
 p span{
   font-weight: normal;
+}
+.modal_image{
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 .modal_title{
   position: absolute;
@@ -190,10 +187,16 @@ p span{
   left: 10px;
   right: 10px;
 }
+.close{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
 .close:hover{
   font-weight: bold;
   cursor: pointer;
 }
+
 section{
   border: 2px solid white;
   width: auto;
@@ -220,9 +223,6 @@ section{
   justify-content: center;
   align-items: flex-end;
 }
-.film h3{
-  z-index: 2;
-}
 .film img{
   height: 100%;
   width: 15%;
@@ -230,6 +230,7 @@ section{
   object-fit: contain;
   z-index: 1;
 }
+
 footer{
   border: 2px solid white;
   width: auto;
