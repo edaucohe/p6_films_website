@@ -68,43 +68,70 @@ function showMovies(movies, category) {
   .catch(error => console.error("il y a une erreur :", error));
 }
 
-function listMoviesForCategory(category) {
-  const params = new URLSearchParams({
-    page_size: 7,
-    genre: category,
-    sort_by: "-imdb_score"
-  })
+function listMoviesForCategory({category, count, sortBy}) {
+  let params = {
+    page_size: count,
+    sort_by: sortBy
+  }
+  if (category){
+    params.genre = category
+  }
+  const searchParams = new URLSearchParams(params)
   return fetch('http://localhost:8000/api/v1/titles/?' + params.toString())
   .then(response => response.json())
 }
 
+const CATEGORIES = [
+  {
+    count: 8,
+    sortBy: "-imdb_score",
+    htmlId: "cat-0"
+  },
+  {
+    category: "Crime"
+    count: 7,
+    sortBy: "-imdb_score"
+    htmlId: "cat-1"
+  },
+  {
+    category: "Family"
+    count: 7,
+    sortBy: "-imdb_score"
+    htmlId: "cat-2"
+  },
+  {
+    category: "Action"
+    count: 7,
+    sortBy: "-imdb_score"
+    htmlId: "cat-3"
+  }
+];
+
 window.onload = function() {
   let close = document.getElementsByClassName('close')[0];
   let modal = document.getElementById('modal');
-  const cat_1 = "Crime";
-  const cat_2 = "Family";
-  const cat_3 = "Action";
-
+  
   // Add closing modal behavior
   closeModalBehavior(close, modal);
   closeModalBehavior(modal, modal);
 
   // Get categories from API
-  let bestMovies = listMoviesForCategory("");
+  let bestMovies = listMoviesForCategory(CATEGORIES[0]);
+  let bestMovie = bestMovies.splice(0, 1);
 
-  let cat1Movies = listMoviesForCategory(cat_1);
-  let cat2Movies = listMoviesForCategory(cat_2);
-  let cat3Movies = listMoviesForCategory(cat_3);
+  let cat1Movies = listMoviesForCategory(CATEGORIES[1]);
+  let cat2Movies = listMoviesForCategory(CATEGORIES[2]);
+  let cat3Movies = listMoviesForCategory(CATEGORIES[3]);
 
   // Show movies on modal and index page
-  showMovies(bestMovies, "cat-0-");
+  showMovies(bestMovies, `${CATEGORIES[0].htmlId}-`);
 
-  showMovies(cat1Movies, "cat-1-");
-  showMovies(cat2Movies, "cat-2-");
-  showMovies(cat3Movies, "cat-3-");
+  showMovies(cat1Movies, `${CATEGORIES[1].htmlId}-`);
+  showMovies(cat2Movies, `${CATEGORIES[2].htmlId}-`);
+  showMovies(cat3Movies, `${CATEGORIES[3].htmlId}-`);
 
   // Titles on index
-  document.getElementById("cat-1-titre").textContent = cat_1;
-  document.getElementById("cat-2-titre").textContent = cat_2;
-  document.getElementById("cat-3-titre").textContent = cat_3;
+  document.getElementById(`${CATEGORIES[1].htmlId}-titre`).textContent = CATEGORIES[1].category;
+  document.getElementById(`${CATEGORIES[2].htmlId}-titre`).textContent = CATEGORIES[2].category;
+  document.getElementById(`${CATEGORIES[3].htmlId}-titre`).textContent = CATEGORIES[3].category;
 }
