@@ -24,7 +24,7 @@ Téléchargez les fichiers du dépôt.
 
 ## Setup
 
-Si vous voulez connaître les données des films, il faudra installer l'API dédiée à cet effet
+Afin de connaître les données des films, il faudra installer l'API dédiée à cet effet
 (voir le dépôt github dans "Helpful Links" et suivez les instructions).
 
 ## Use

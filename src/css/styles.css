@@ -210,11 +210,20 @@ section{
   display: flex;
   position: relative;
   justify-content: space-around;
+
 }
 .films img{
   position: absolute;
   top: 40%;
   z-index: 3;
+}
+.films #left_arrow{
+  cursor: pointer;
+  left: -3%;
+}
+.films #right_arrow{
+  cursor: pointer;
+  right: -3%;
 }
 .film{
   width: 100%;
